@@ -9,10 +9,10 @@ public class JoystickLocomotion : MonoBehaviour
 
     void Update()
     {
-        var joystickAxsis = OVRInput.Get(OVRInput.RawAxis2D.LThumbstick, OVRInput.Controller.LTouch);
+        var joystickAxsis = OVRInput.Get(OVRInput.RawAxis1D.LIndexTrigger, OVRInput.Controller.LTouch);
         float fixedY = rb.position.y;
 
-        rb.position += (transform.right * joystickAxsis.x + transform.forward * joystickAxsis.y) * Time.deltaTime * speed;
+        rb.position += (transform.forward * joystickAxsis) * Time.deltaTime * speed;
         rb.position = new Vector3(rb.position.x, fixedY, rb.position.z);
     }
 }
